@@ -1,3 +1,5 @@
+import 'dart:async';
+
 Stream<int> numberStream = Stream.fromIterable([1, 2, 3, 4, 5]);
 
 Stream<int> countdownStream() =>
@@ -22,4 +24,17 @@ void main() async {
   await for (var i in countdownStream()) {
 print('$i...');
   }
+
+  final controller = StreamController<String>();
+
+  controller.stream.listen(
+    (data) => print('Data: $data'),
+    onDone: () => print('Стрім завершено'),
+  );
+
+  controller.add('Hello');
+  controller.add('World');
+  controller.add('Dart');
+
+  controller.close();
 }
