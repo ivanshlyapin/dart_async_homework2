@@ -14,6 +14,14 @@ String getAgeSuffix(int age) {
   return 'років';
 }
 
+Future<String> delayedCountdown(int seconds) async {
+  for (int i = seconds; i > 0; i--) {
+    print('$i...');
+    await Future.delayed(Duration(seconds: 1));
+  }
+  return 'Старт!';
+}
+
 void main() async {
   final stopwatch = Stopwatch()..start();
 
@@ -26,4 +34,6 @@ void main() async {
 print('Мене звати $name');
 print('Мені $age ${getAgeSuffix(age)}');
 print('Time: ${stopwatch.elapsed}');
+String result = await delayedCountdown(3);
+print(result);
 }
