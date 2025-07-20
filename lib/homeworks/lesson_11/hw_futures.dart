@@ -15,9 +15,12 @@ String getAgeSuffix(int age) {
 }
 
 void main() async {
+  final stopwatch = Stopwatch()..start();
   String name = await fetchName();
-  print('Мене звати $name');
   String ageStr = await fetchAge();
   int age = int.parse(ageStr);
-  print('Мені $age ${getAgeSuffix(age)}');
+  stopwatch.stop();
+print('Мене звати $name');
+print('Мені $age ${getAgeSuffix(age)}');
+print('Time: ${stopwatch.elapsed}');
 }
